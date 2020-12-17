@@ -11,8 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="notification_mgs")
-@IdClass(NotificationMsgId.class)
-public class NotificationMsg {
+@IdClass(NotificationMessageId.class)
+public class NotificationMessage {
 
     @Id
     private String sensor_id;
@@ -22,13 +22,13 @@ public class NotificationMsg {
 
 
 
-    public NotificationMsg(String sensor_id, String date, String description) {
+    public NotificationMessage(String sensor_id, String date, String description) {
         this.sensor_id = sensor_id;
         this.date = date;
         this.description = description;
     }
 
-    public NotificationMsg() {
+    public NotificationMessage() {
 
     }
 
