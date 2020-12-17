@@ -3,15 +3,15 @@ package com.se.dummytempmonitorbackend.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class NotificationMsgId  implements Serializable {
+public class NotificationMessageId implements Serializable {
 
     private String sensor_id;
     private String date;
 
-    public NotificationMsgId(){      }
+    public NotificationMessageId(){      }
 
 
-    public NotificationMsgId(String sensor_id, String date) {
+    public NotificationMessageId(String sensor_id, String date) {
         this.sensor_id = sensor_id;
         this.date = date;
     }
@@ -20,7 +20,7 @@ public class NotificationMsgId  implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NotificationMsgId that = (NotificationMsgId) o;
+        NotificationMessageId that = (NotificationMessageId) o;
         return Objects.equals(sensor_id, that.sensor_id) &&
                 Objects.equals(date, that.date);
     }
