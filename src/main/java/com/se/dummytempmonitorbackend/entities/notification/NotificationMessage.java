@@ -1,5 +1,4 @@
-package com.se.dummytempmonitorbackend.entities;
-
+package com.se.dummytempmonitorbackend.entities.notification;
 
 
 import javax.persistence.Entity;
@@ -7,26 +6,29 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+
+
+
 @Entity
-@Table(name="sensors_mock")
-@IdClass(SensorMockId.class)
-public class SensorMock {
+@Table(name="notification_msg")
+@IdClass(NotificationMessageId.class)
+public class NotificationMessage {
 
     @Id
     private String sensor_id;
     @Id
     private String date;
-    private String data_value;
+    private String description;
 
 
 
-    public SensorMock(String sensor_id, String date, String data_value) {
+    public NotificationMessage(String sensor_id, String date, String description) {
         this.sensor_id = sensor_id;
         this.date = date;
-        this.data_value = data_value;
+        this.description = description;
     }
 
-    public SensorMock() {
+    public NotificationMessage() {
 
     }
 
@@ -46,14 +48,15 @@ public class SensorMock {
         this.date = date;
     }
 
-    public String getData_value() {
-        return data_value;
+    public String getDescription() {
+        return description;
     }
 
-    public void setData_value(String data_value) {
-        this.data_value = data_value;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 
 
 }
+

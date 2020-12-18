@@ -1,4 +1,4 @@
-package com.se.dummytempmonitorbackend.entities;
+package com.se.dummytempmonitorbackend.entities.user;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,22 +6,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-
-public class Users {
+public class User {
     @Id
     private String email;
     private String password;
     private String phone_number;
     private String name;
 
-    public Users(String email,String password,String phone_number,String name){
+    public User(String email, String password, String phone_number, String name){
         this.email=email;
         this.password=password;
         this.phone_number=phone_number;
         this.name=name;
     }
 
-    public Users(){
+    public User(){
 
     }
 

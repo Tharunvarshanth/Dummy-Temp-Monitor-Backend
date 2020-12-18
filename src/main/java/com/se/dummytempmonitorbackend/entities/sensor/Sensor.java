@@ -1,11 +1,11 @@
-package com.se.dummytempmonitorbackend.entities;
+package com.se.dummytempmonitorbackend.entities.sensor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sensor")
+@Table(name="sensors")
 public class Sensor {
     @Id
     private String id;

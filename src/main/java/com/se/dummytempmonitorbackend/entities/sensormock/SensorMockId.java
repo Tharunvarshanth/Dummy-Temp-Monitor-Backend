@@ -1,17 +1,17 @@
-package com.se.dummytempmonitorbackend.entities;
+package com.se.dummytempmonitorbackend.entities.sensormock;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class NotificationMsgId  implements Serializable {
+public class SensorMockId  implements Serializable {
 
     private String sensor_id;
     private String date;
 
-    public NotificationMsgId(){      }
+    public SensorMockId(){      }
 
 
-    public NotificationMsgId(String sensor_id, String date) {
+    public SensorMockId(String sensor_id, String date) {
         this.sensor_id = sensor_id;
         this.date = date;
     }
@@ -20,7 +20,7 @@ public class NotificationMsgId  implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NotificationMsgId that = (NotificationMsgId) o;
+        SensorMockId that = (SensorMockId) o;
         return Objects.equals(sensor_id, that.sensor_id) &&
                 Objects.equals(date, that.date);
     }
