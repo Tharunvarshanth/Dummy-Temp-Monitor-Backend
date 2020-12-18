@@ -1,7 +1,7 @@
 package com.se.dummytempmonitorbackend.controller;
 
-import com.se.dummytempmonitorbackend.entities.sensor.Sensor;
 import com.se.dummytempmonitorbackend.entities.notification.NotificationMessage;
+import com.se.dummytempmonitorbackend.entities.sensor.Sensor;
 import com.se.dummytempmonitorbackend.entities.sensormock.SensorMock;
 import com.se.dummytempmonitorbackend.entities.sensormock.SensorMockId;
 import com.se.dummytempmonitorbackend.notification.EmailNotification;
