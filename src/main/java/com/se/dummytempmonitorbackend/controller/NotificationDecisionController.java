@@ -16,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.mail.MessagingException;
+import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
@@ -44,7 +47,7 @@ public class NotificationDecisionController {
 
     //Get Data from Nifi
     @PostMapping("/getreaddatas")
-    public void getreaddatas(@RequestBody SensorMock sensorMock){
+    public void getreaddatas(@RequestBody SensorMock sensorMock) throws IOException, MessagingException {
 
         String sensor_device_id = sensorMock.getSensor_id();
         String values_get_date_time = sensorMock.getDate();
@@ -52,11 +55,10 @@ public class NotificationDecisionController {
                 SensorMockId sensorMockId = new SensorMockId(sensor_device_id,values_get_date_time);
          Optional<SensorMock> sensormockoptional = sensorMockRepositary.findById(sensorMockId);
 
-
-
           if(sensormockoptional.isPresent()){
               SensorMock sensorMock1 = sensormockoptional.get();
               String temperature_value = sensorMock1.getData_value() ;
+
                int number_datavalue = Integer.parseInt(temperature_value.replaceAll("[^0-9.]", ""));
 
               //Call to get  Particular sensor threshold
@@ -66,14 +68,16 @@ public class NotificationDecisionController {
 
 
               if( number_datavalue > numberthreshold ){
-                  notificationManager = new EmailNotification();
-                  notificationManager.sender();
-
                   notificationManager = new SmsNotification();
-                  notificationManager.sender();
+                  List<String> phonelist = userrepository.findAllPhonenumber();
+                  notificationManager.sender(phonelist,"Temperature Monitor Alert Generation","Read value:"+temperature_value+"> Threshold value :"+threshold);
+
+                  notificationManager = new EmailNotification();
+                  List<String> emaillist = userrepository.findAllEmail();
+                  notificationManager.sender(emaillist,"Temperature Monitor Alert Generation","Read value:"+temperature_value+"> Threshold value :"+threshold);
 
                   //Add Notification TABLE Messages
-                   addmsg_todb(sensor_device_id,values_get_date_time,"Read value:"+temperature_value+"> Threshold value :"+threshold );
+                  addmsg_todb(sensor_device_id,values_get_date_time,"Read value:"+temperature_value+"> Threshold value :"+threshold );
               }
 
           }

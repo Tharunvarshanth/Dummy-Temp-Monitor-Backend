@@ -21,9 +21,6 @@ public class SensorMockController {
     }
 
 
-
-
-
     @GetMapping("/send_sensor_reads_to_charts")
     public List<SensorMock> send_read_datas(@RequestParam String sensor_id){
 
