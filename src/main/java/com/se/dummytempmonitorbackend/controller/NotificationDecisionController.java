@@ -81,6 +81,9 @@ public class NotificationDecisionController {
               }
 
           }
+          else{
+              System.out.println("<<<<<<<<<<<<<<<SYSTEM ERROR>>>>>>>>>>>>>>");
+          }
 
     }
 
